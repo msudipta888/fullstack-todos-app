@@ -1,0 +1,14 @@
+/* src/App.css */
+.App {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.5s;
+}
+
+.sidenav.closed + .main-content {
+  margin-left: 60px;
+}
