@@ -10,9 +10,9 @@ const Router = () => {
   return (
     <div>
     <Routes>
+    <Route path="/" element={<PrivateRoute><TodoApp/></PrivateRoute>} /> 
     <Route path='/register' element={<Regis/>}/>
     <Route path="/login" element={<Login setUserEmail={setUserEmail}/>}/>
-    <Route path="/" element={<PrivateRoute><TodoApp/></PrivateRoute>} /> 
     <Route path='/logout' element={<Logout email={userEmail}/>}/>
     </Routes>
     </div>
