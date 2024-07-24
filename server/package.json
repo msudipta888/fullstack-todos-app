@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.json"
+    "start": "node index.json",
+    "build": "npm i"
   },
   "author": "sudipta",
   "license": "ISC",
