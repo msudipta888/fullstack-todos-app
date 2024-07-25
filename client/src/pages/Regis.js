@@ -16,7 +16,7 @@ const Regis = () => {
     e.preventDefault();
     setLoad(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/users/register", {
+      const res = await axios.post("https://todosapp-me9o.onrender.com/api/users/register", {
         name,
         email,
         password,

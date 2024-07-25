@@ -13,7 +13,7 @@ const UpLoadpic = () => {
     const formData = new FormData();
     formData.append("profilePic", file);
     try {
-      const res = await axios.post("http://localhost:5000/profile/upload", formData, {
+      const res = await axios.post("https://todosapp-me9o.onrender.com/profile/upload", formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },
@@ -34,7 +34,7 @@ const UpLoadpic = () => {
       <form onSubmit={submitChange} className="upload-form">
         {imageUrl && (
           <img 
-            src={`http://localhost:5000${imageUrl}`}
+            src={`https://todosapp-me9o.onrender.com/${imageUrl}`}
             height={100}
             width={100}
             className="profile-pic"

@@ -10,7 +10,7 @@ const TodoApp = () => {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const response = await axios.get("http://localhost:5000/api/todos", {
+      const response = await axios.get("https://todosapp-me9o.onrender.com/api/todos", {
         headers: {
           "auth-token": localStorage.getItem("token"),
         },
@@ -22,7 +22,7 @@ const TodoApp = () => {
 
   const addTodo = async () => {
     const response = await axios.post(
-      "http://localhost:5000/api/todos",
+      "https://todosapp-me9o.onrender.com/api/todos",
       { text: newTodo },
       {
         headers: {
@@ -43,7 +43,7 @@ const TodoApp = () => {
   };
   const updateTodo = async (id, editingText) => {
     const response = await axios.put(
-      `http://localhost:5000/api/todos/${id}`,
+      `https://todosapp-me9o.onrender.com/api/todos/${id}`,
       { text: editingText },
       {
         headers: {
@@ -57,7 +57,7 @@ const TodoApp = () => {
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/api/todos/${id}`, {
+    await axios.delete(`https://todosapp-me9o.onrender.com/api/todos/${id}`, {
       headers: {
         "auth-token": localStorage.getItem("token"),
       },

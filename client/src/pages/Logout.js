@@ -9,7 +9,7 @@ const Logout = ({ email }) => {
     const logout = async () => {
       try {
         console.log(email);
-       const response = await axios.post("http://localhost:5000/api/users/logout", { email });
+       const response = await axios.post("https://todosapp-me9o.onrender.com/api/users/logout", { email });
        const message = response.data.message;
         navigate('/login',{state:{message}});
         localStorage.removeItem('token');
