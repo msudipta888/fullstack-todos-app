@@ -30,7 +30,8 @@ const upload = multer({
 
 router.post("/upload", upload.single("profilePic"), async (req, res) => {
   if(!req.file){
-    return res.status(401).json('No pic upload')
+    console.error('Error uploading file:', error);
+    res.status(500).send('Server error.');
   }
   const filePath = `/uploads/${req.file.filename}`;
   res.status(200).json({

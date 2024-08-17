@@ -22,9 +22,8 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next(); 
 }); 
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/users", require("./routes/authRoute"));
 app.use("/api", require("./routes/todoRoutes"));
-app.use('/uploads',express.static('uploads'))
 app.use('/profile',require('./routes/imageRoute'));
 

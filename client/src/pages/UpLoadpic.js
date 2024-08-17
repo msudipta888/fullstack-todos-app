@@ -21,7 +21,7 @@ const UpLoadpic = () => {
       console.log(res.data.url);
       setImageUrl(res.data.url);
     } catch (err) {
-      console.log(err);
+      alert(err.message);
     }
   };
 
