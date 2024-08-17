@@ -9,35 +9,35 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now();
-    cb(null, uniqueSuffix +path.extname( file.originalname));
+    cb(null, uniqueSuffix + path.extname(file.originalname));
   },
 });
 
-//file filter to allow only images
-const fileFilter = (req,file,cb)=>{
-  if(file.mimetype.startsWith('image/')){
-    cb(null,true)
-  }else{
-    cb('error: images only',false);
+// File filter to allow only images
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image/')) {
+    cb(null, true);
+  } else {
+    cb(new Error('Error: images only'), false);
   }
 };
 
-
-const upload = multer({
-   storage: storage,
-   fileFilter:fileFilter
- });
+const upload = multer({ 
+  storage: storage, 
+  fileFilter: fileFilter 
+});
 
 router.post("/upload", upload.single("profilePic"), async (req, res) => {
-  if(!req.file){
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = `/uploads/${req.file.filename}`;
+    res.status(200).json({ message: 'Image uploaded successfully', url: filePath });
+  } catch (error) {
     console.error('Error uploading file:', error);
-    res.status(500).send('Server error.');
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
-  const filePath = `/uploads/${req.file.filename}`;
-  res.status(200).json({
-    message:'Image uploaded sucessfully',
-    url:filePath
-  })
-})
+});
 
 module.exports = router;
